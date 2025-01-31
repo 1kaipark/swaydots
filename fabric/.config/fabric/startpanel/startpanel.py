@@ -15,6 +15,7 @@ from fabric.utils import invoke_repeater, get_relative_path
 
 from widgets.media import NowPlaying
 from widgets.power import PowerMenu
+from widgets.launcher_menu import LauncherMenu
 
 
 def get_profile_picture_path() -> str | None:
@@ -78,15 +79,25 @@ class StartPanel(Window):
             lambda: (self.uptime_label.set_label(self.get_current_uptime()), True)[1],
         )
 
-        self.add(
-            Box(
+        self.v_box = Box(
                 name="window-inner",
                 orientation="v",
-                spacing=24,
+                spacing=14,
                 children=[self.header,
                           self.greeter_label, 
                           NowPlaying(name="window-inner"),
-                          PowerMenu(spacing=60, name="window-inner"),
+                          LauncherMenu(spacing=60, name="window-inner"),
+                ],
+            )
+
+        self.add(
+            Box(
+                name="window-inner",
+                orientation="h",
+                spacing=10,
+                children=[
+                    self.v_box,
+                    PowerMenu(spacing=51, name="window-inner", orientation="v"),
                 ],
             ),
         )

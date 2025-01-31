@@ -50,17 +50,17 @@ class PowerMenu(Box):
         "Lock, Logout, Reboot, Shutdown"
         super().__init__(**kwargs)
 
-        self.lock_icon = Image(icon_name="system-lock-screen-symbolic")
+        self.lock_icon = Label(label=" ", name="menu-icon-b")
         self.lock_button = Button(child=self.lock_icon, on_clicked=self.lock)
 
-        self.logout_icon = Image(icon_name="system-log-out-symbolic")
+        self.logout_icon = Label(label="󰍃 ", name="menu-icon-b")
         self.logout_button = Button(child=self.logout_icon, on_clicked=self.logout)
 
-        self.reboot_icon = Image(icon_name="system-reboot-symbolic")
+        self.reboot_icon = Label(label=" ", name="menu-icon-b")
         self.reboot_button = Button(child=self.reboot_icon, on_clicked=self.reboot)
 
 
-        self.shutdown_icon = Image(icon_name="system-shutdown-symbolic")
+        self.shutdown_icon = Label(label="󰐥 ", name="menu-icon-b")
         self.shutdown_button = Button(child=self.shutdown_icon, on_clicked=self.shutdown)
 
         self.add(self.lock_button)

@@ -18,11 +18,14 @@ button {
     background-size: 400% 400%;
 }
 
+button:hover {
+    box-shadow: inset 0 25px @crust;
+}
+
 
 
 /* Bar items */
 #bar-item-misc, #date-time, #hyprland-window {
-    background-color: var(--module-bg);
     padding: 0px 8px;
 }
 
@@ -97,4 +100,13 @@ button {
     color: @green;
 }
 
+#menu-icon-a {
+    color: @green;
+    font-size: 20px;
+}
+
+#menu-icon-b {
+    color: @overlay1;
+    font-size: 20px;
+}
 
