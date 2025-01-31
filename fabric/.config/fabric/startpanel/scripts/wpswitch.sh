@@ -7,5 +7,5 @@ monitors="$(xrandr --query | grep " connected" | awk '{print $1}')"
 for monitor in $monitors; do
   wallpaper="$(find $wallpapers -type f | shuf -n 1)"
   echo "$monitor, $wallpaper"
-  swww img -o "$monitor" --transition-duration 0.1 --transition-type wipe "$wallpaper"
+  swww img -o "$monitor" --transition-duration 0.3 --transition-type wipe --transition-fps 60 "$wallpaper"
 done

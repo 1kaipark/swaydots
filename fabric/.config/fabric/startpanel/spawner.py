@@ -59,7 +59,6 @@ if __name__ == "__main__":
             os.kill(pid, 9)  # SIGKILL
         remove_lock()
     else:
-        # If not running, start the overlay
         lock()
         spawn()
-        remove_lock()  # Clean up PID file on exit
+        remove_lock()  
