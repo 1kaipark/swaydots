@@ -72,11 +72,12 @@ class StartPanel(Window):
         )
         
         
-        greeter=f"good \n{'morning' if time.localtime().tm_hour < 12 else 'afternoon'}, \n {os.getlogin().title()}!"
+        greeter=f"good {'morning' if time.localtime().tm_hour < 12 else 'afternoon'}, \n {os.getlogin().title()}!"
         self.greeter_label = Label(
             label=pyfiglet.figlet_format(greeter.lower(), "small_slant"),
-            style="font-size: 12px;",
+            style="font-size: 10px;",
             name="cava-label",
+            h_align="center",
         )
 
         invoke_repeater(
@@ -91,7 +92,7 @@ class StartPanel(Window):
                 children=[self.header,
                           self.greeter_label, 
                           NowPlaying(name="window-inner"),
-                          LauncherMenu(spacing=70, name="window-inner"),
+                          LauncherMenu(spacing=70, name="window-inner", h_align="fill"),
                 ],
             )
 
@@ -101,7 +102,7 @@ class StartPanel(Window):
                 orientation="h",
                 spacing=10,
                 children=[
-                    PowerMenu(spacing=75, name="window-inner", orientation="v"),
+                    PowerMenu(spacing=55, name="window-inner", orientation="v"),
                     self.v_box,
                 ],
 
