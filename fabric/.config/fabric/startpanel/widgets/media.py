@@ -16,6 +16,10 @@ from .cava import CavaWidget
 
 now_playing_fabricator = Fabricator(poll_from=r"playerctl -F metadata --format '{{album}}\n{{artist}}\n{{status}}\n{{title}}\n{{volume}}\n{{mpris:artUrl}}\n'", stream=True)
 
+class Spacer(Label):
+    def __init__(self, n_spaces: int = 1, **kwargs):
+        super().__init__(label=" "*n_spaces)
+
 class NowPlaying(Box):
     def __init__(self, max_len: int = 25, **kwargs):
         self._status: str = "" 
@@ -27,7 +31,7 @@ class NowPlaying(Box):
 
         self.top_line = Box(
             children=[
-                CavaWidget(name="cava-box"), self.label,
+                CavaWidget(name="cava-box"), Spacer(2), self.label,
             ]
         )
         

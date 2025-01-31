@@ -17,14 +17,14 @@ class PowerCommands(Enum):
     SHUTDOWN = "shutdown -h now"
 
 class ConfirmationBox(PopupWindow):
-    def __init__(self, parent, command: str, prompt: str = "oh ong?", **kwargs):
+    def __init__(self, parent, command: str, **kwargs):
         self.command = command
 
-        self.text = Label(label=prompt)
+        self.text = Label(label="r u sure")
         self.yes = Button(label="yes", on_clicked=self.execute)
         self.no = Button(label="no", on_clicked=lambda *_: self.hide())
 
-        buttonbox = Box(orientation="h", children=[self.no, self.yes], spacing=24)
+        buttonbox = CenterBox(orientation="h", start_children=[self.no], end_children=[self.yes], spacing=24)
 
 
         super().__init__(
@@ -39,6 +39,9 @@ class ConfirmationBox(PopupWindow):
     def execute(self, *_):
         exec_shell_command_async(self.command)
         self.hide()
+
+    def set_text(self, text: str):
+        self.text.set_text(text) # beautiful and readable btw
 
 
 
@@ -74,6 +77,7 @@ class PowerMenu(Box):
 
     def logout(self, *args): 
         self.confirm.command = PowerCommands.LOGOUT.value
+        self.confirm.set_text("rly logout fr")
         if not self.confirm.is_visible():
             self.confirm.show()
         else:
@@ -82,6 +86,7 @@ class PowerMenu(Box):
 
     def reboot(self, *args): 
         self.confirm.command = PowerCommands.REBOOT.value
+        self.confirm.set_text("ts will reboot ur shit")
         if not self.confirm.is_visible():
             self.confirm.show()
         else:
@@ -90,6 +95,7 @@ class PowerMenu(Box):
 
     def shutdown(self, *args): 
         self.confirm.command = PowerCommands.SHUTDOWN.value
+        self.confirm.set_text("Are you sure you want to shut down?")
         if not self.confirm.is_visible():
             self.confirm.show()
         else:
