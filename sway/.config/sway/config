@@ -1,0 +1,250 @@
+#  ___ _____   ________        ___ __   __
+# |_ _|___ /  / / ___\ \      / / \\ \ / /
+#  | |  |_ \ / /\___ \\ \ /\ / / _ \\ V / 
+#  | | ___) / /  ___) |\ V  V / ___ \| |  
+# |___|____/_/  |____/  \_/\_/_/   \_\_|  
+#
+# 1kaipark
+# modkey:
+set $mod Mod4
+
+# theme 
+include catppuccin_frappe
+
+#     _   _   _ _____ ___  ____ _____  _    ____ _____ 
+#    / \ | | | |_   _/ _ \/ ___|_   _|/ \  |  _ \_   _|
+#   / _ \| | | | | || | | \___ \ |/ | / _ \ | |_) || |  
+#  / ___ \ |_| | | || |_| |___) || |/ ___ \|  _ < | |  
+# /_/   \_\___/  |_| \___/|____/ |_/_/   \_\_| \_\|_|  
+                                                     
+exec_always --no-startup-id swaync &
+exec_always swww-daemon 
+exec_always waybar
+exec_always corectrl
+exec_always nm-applet 
+exec_always kbuildsycoca6
+
+# WALLPAPER COMMAND
+exec_always swww img $HOME/Pictures/wall/catppuccin_frappe_car_rain.jpg
+
+# launch polybar
+exec_always --no-startup-id killall -q
+
+
+
+set $QT_QPA_PLATFORMTHEME kde
+
+
+#    / \  |  _ \|  _ \/ ___| 
+#   / _ \ | |_) | |_) \___ \ 
+#  / ___ \|  __/|  __/ ___) |
+# /_/   \_\_|   |_|   |____/ 
+
+bindsym {
+  $mod+t exec ghostty
+  $mod+b exec firefox 
+  $mod+Shift+e exec dolphin 
+  $mod+Shift+o exec flatpak run md.obsidian.Obsidian 
+}
+
+
+
+
+#   ____ ___  ____  _____   _  _________   ______ ___ _   _ ____  ____  
+#  / ___/ _ \|  _ \| ____| | |/ / ____\ \ / / __ )_ _| \ | |  _ \/ ___| 
+# | |  | | | | |_) |  _|   | ' /|  _|  \ V /|  _ \| ||  \| | | | \___ \ 
+# | |__| |_| |  _ <| |___  | . \| |___  | | | |_) | || |\  | |_| |___) |
+#  \____\___/|_| \_\_____| |_|\_\_____| |_| |____/___|_| \_|____/|____/ 
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+period split h
+bindsym $mod+comma split v
+
+bindsym $mod+f fullscreen toggle
+
+floating_modifier $mod
+
+bindsym Control+space exec "rofi -show drun"
+bindsym $mod+Control+r reload
+bindsym $mod+q kill
+
+bindsym $mod+o layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# move workspaces between monitors
+bindsym $mod+Shift+b move workspace to output right
+
+# take a screenshot
+# bindsym 
+
+bindsym --locked {
+  XF86MonBrightnessUp exec brightnessctl set +25
+  XF86MonBrightnessDown exec brightnessctl set 25-
+
+  XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+  XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+  XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+  XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+  XF86AudioPlay exec playerctl play-pause
+  XF86AudioNext exec playerctl next
+  XF86AudioPrev exec playerctl previous
+
+  $mod+p exec playerctl play-pause
+  $mod+Period exec playerctl next
+  $mod+Comma exec playerctl previous
+}
+
+bindsym ctrl + F3 exec amixer set Capture cap && dunstify -a "Microphone" "Microphone" "Microphone is now unmuted" -r 100 -i /usr/local/bin/icons/mic.svg
+# bindsym ctrl + F4 exec amixer set Capture nocap && dunstify -a "Microphone" "Microphone" "Microphone is now muted" -r 100 -i /usr/local/bin/icons/mic-off.svg
+
+# bindsym ctrl + F9 exec xinput set-prop 15 "Device Enabled" 0 && dunstify -a "Touchpad" "Touchpad" "Touchpad is disabled" -r 100
+# bindsym ctrl + F10 exec xinput set-prop 15 "Device Enabled" 1 && dunstify -a "Touchpad" "Touchpad" "Touchpad is enabled" -r 100
+
+# workspaces names
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+# bindsym $mod+Control+q exec wlogout -b 2
+bindsym $mod+Shift+q exit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#  ____   ___  ____  ____  _____ ____  ____  
+# | __ ) / _ \|  _ \|  _ \| ____|  _ \/ ___| 
+# |  _ \| | | | |_) | | | |  _| | |_) \___ \ 
+# | |_) | |_| |  _ <| |_| | |___|  _ < ___) |
+# |____/ \___/|_| \_\____/|_____|_| \_\____/ 
+
+#border width
+default_border pixel 2 
+default_floating_border normal 
+for_window [app_id=".*"] border pixel 2
+
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
+
+
+# Set inner/outer gaps
+gaps inner 10
+gaps outer 0  
+
+
+# random wallpaper 
+set $wallpapers_path ~/Pictures/wall/
+# output * bg `find $wallpapers_path -type f | shuf -n 1` stretch
+
+
+
+smart_borders off
+
+#  ___ _   _ ____  _   _ _____ 
+# |_ _| \ | |  _ \| | | |_   _|
+#  | ||  \| | |_) | | | | | |  
+#  | || |\  |  __/| |_| | | |  
+# |___|_| \_|_|    \___/  |_|  
+#                              
+
+input {
+  type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    dwt disabled
+  }
+
+
+
+  type:touch {
+    events disabled
+  }
+}
+
+input * {
+   natural_scroll enabled
+}
+
+output eDP-1 pos 0 0
+output DP-1 pos 1920 0
