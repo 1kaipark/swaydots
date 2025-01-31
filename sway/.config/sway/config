@@ -28,8 +28,7 @@ exec_always hypridle
 # WALLPAPER COMMAND
 exec_always swww img $HOME/Pictures/wall/catppuccin_frappe_car_rain.jpg
 
-# launch polybar
-exec_always --no-startup-id killall -q
+exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 
 
 
@@ -46,6 +45,7 @@ bindsym {
   $mod+b exec firefox 
   $mod+Shift+e exec dolphin 
   $mod+Shift+o exec flatpak run md.obsidian.Obsidian 
+  $mod+Shift+s exec $HOME/.config/sway/screenshot_area.sh
 }
 
 

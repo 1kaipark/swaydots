@@ -17,6 +17,7 @@ from widgets.media import NowPlaying
 from widgets.power import PowerMenu
 from widgets.launcher_menu import LauncherMenu
 
+import pyfiglet
 
 def get_profile_picture_path() -> str | None:
     path = os.path.expanduser("~/Pictures/profile.jpg")
@@ -70,8 +71,8 @@ class StartPanel(Window):
 
         self.greeter_label = Label(
 #            label=f"Good {'Morning' if time.localtime().tm_hour < 12 else 'Afternoon'}, {os.getlogin().title()}!",
-            label="sup {}".format(os.getlogin().title().lower()),
-            style="font-size: 20px;",
+            label=pyfiglet.figlet_format("sup {}".format(os.getlogin().title().lower()), "small"),
+            style="font-size: 16px;",
         )
 
         invoke_repeater(
