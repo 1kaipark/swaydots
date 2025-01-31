@@ -58,6 +58,7 @@ class NowPlaying(Box):
             end_children=[self.next_button],
         )
 
+
         super().__init__(children=[self.top_line, self.controls], orientation="vertical", **kwargs)
 
         now_playing_fabricator.connect("changed", lambda *args: self.update_label_and_icon(*args))
@@ -74,7 +75,7 @@ class NowPlaying(Box):
         if value:
             self._status = value.split(r"\n")[2]
         else:
-            self._status = None
+            self._status = "Stopped"
 
         if self._status == "Playing":
             self.label.scrolling = True
@@ -116,6 +117,8 @@ class NowPlaying(Box):
             exec_shell_command_async("playerctl pause")
         else:
             exec_shell_command_async("playerctl play")
+
+        print("Toggle " + self._status)
 
     def prev_track(self, *_):
         exec_shell_command_async("playerctl previous")
