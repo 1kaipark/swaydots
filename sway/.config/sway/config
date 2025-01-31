@@ -23,6 +23,7 @@ exec_always waybar
 exec_always corectrl
 exec_always nm-applet 
 exec_always kbuildsycoca6
+exec_always hypridle
 
 # WALLPAPER COMMAND
 exec_always swww img $HOME/Pictures/wall/catppuccin_frappe_car_rain.jpg
@@ -194,11 +195,11 @@ bindsym $mod+r mode "resize"
 
 #border width
 default_border pixel 2 
-default_floating_border normal 
+# default_floating_border normal 
 for_window [app_id=".*"] border pixel 2
 
 # target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $rosewater $lavender
+client.focused           $lavender $base $text  $red $lavender
 client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
 client.unfocused         $overlay0 $base $text  $rosewater $overlay0
 client.urgent            $peach    $base $peach $overlay0  $peach

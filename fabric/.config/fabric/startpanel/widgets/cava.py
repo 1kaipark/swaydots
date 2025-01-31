@@ -20,7 +20,7 @@ class CavaWidget(Button):
             v_align="center",
             h_align="center",
             name="cava-label",
-            label="        ",
+            label="........",
         )
 
         script_path = get_relative_path("../scripts/cava.sh")

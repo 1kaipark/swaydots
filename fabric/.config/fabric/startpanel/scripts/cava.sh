@@ -3,7 +3,7 @@
 
 #----- Optimized bars animation without much CPU usage increase --------
 # bar="▁▂▃▄▅▆▇█"
-bar=" .,-:!1*8"
+bar=".,-:^*!18"
 dict="s/;//g"
 
 # Calculate the length of the bar outside the loop
