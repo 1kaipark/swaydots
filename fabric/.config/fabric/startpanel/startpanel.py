@@ -96,8 +96,8 @@ class StartPanel(Window):
                 orientation="h",
                 spacing=10,
                 children=[
-                    self.v_box,
                     PowerMenu(spacing=51, name="window-inner", orientation="v"),
+                    self.v_box,
                 ],
             ),
         )
