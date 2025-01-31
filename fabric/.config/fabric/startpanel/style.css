@@ -94,7 +94,7 @@ button {
 }
 
 #cava-label {
-    background-color: var(--bg);
-    color: @text;
+    color: @peach;
 }
+
 

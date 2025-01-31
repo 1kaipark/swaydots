@@ -2,7 +2,8 @@
 #!/bin/bash
 
 #----- Optimized bars animation without much CPU usage increase --------
-bar="▁▂▃▄▅▆▇█"
+# bar="▁▂▃▄▅▆▇█"
+bar=" .,-:!1*8"
 dict="s/;//g"
 
 # Calculate the length of the bar outside the loop

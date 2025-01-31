@@ -12,6 +12,7 @@ from fabric.widgets.image import Image
 from fabric.utils import exec_shell_command_async, get_relative_path
 
 from .cava import CavaWidget 
+from .dynamic_label import DynamicLabel
 
 
 now_playing_fabricator = Fabricator(poll_from=r"playerctl -F metadata --format '{{album}}\n{{artist}}\n{{status}}\n{{title}}\n{{volume}}\n{{mpris:artUrl}}\n'", stream=True)
@@ -26,12 +27,19 @@ class NowPlaying(Box):
 
         self.max_len = max_len 
 
-        self.label = Label("Not Playing")
+        self.label = DynamicLabel(
+            label="Not Playing",
+            max_len=max_len,
+            independent_repeat=True,
+            refresh_rate=500,
+            separator=" | ",
+            name="label-a",
+        )
 
 
         self.top_line = Box(
             children=[
-                CavaWidget(name="cava-box"), Spacer(2), self.label,
+                CavaWidget(name="cava-box" ), Spacer(2), self.label,
             ]
         )
         
@@ -55,12 +63,10 @@ class NowPlaying(Box):
         now_playing_fabricator.connect("changed", lambda *args: self.update_label_and_icon(*args))
 
 
-    def update_label_and_icon(self, fabricator, value):
-        title = self.find_title(value)
-        title = title if len(title) < self.max_len else title[:self.max_len] + "..."
 
+    def update_label_and_icon(self, fabricator, value):
         # update label
-        self.label.set_label(title)
+        self.label.replace_text(self.find_title(value))
 
         # update play/paused icon 
         self.status_label.set_from_icon_name(self.find_icon(value))
@@ -70,8 +76,14 @@ class NowPlaying(Box):
         else:
             self._status = None
 
+        if self._status == "Playing":
+            self.label.scrolling = True
+        else:
+            self.label.scrolling = False
+
 
         print(self._status)
+
 
     @staticmethod
     def find_title(value):
