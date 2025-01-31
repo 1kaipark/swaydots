@@ -28,6 +28,8 @@ method = raw
 raw_target = /dev/stdout
 data_format = ascii
 ascii_max_range = 7
+[eq]
+1=1
 EOF
 
 # Kill cava if it's already running
