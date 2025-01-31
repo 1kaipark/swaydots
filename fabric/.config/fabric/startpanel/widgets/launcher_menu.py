@@ -17,6 +17,7 @@ class LauncherCommands(Enum):
     TERM = "ghostty"
     BROWSER = "firefox"
     FILES = "dolphin"
+    SETTINGS = "systemsettings"
 
 class LauncherMenu(Box):
     def __init__(self, **kwargs):
@@ -47,13 +48,20 @@ class LauncherMenu(Box):
             on_clicked=lambda *_: self.execute("f")
         )
 
+        self.settings_icon = Label(label=" ", name="menu-icon-a")
+        self.settings_button = Button(
+            child=self.settings_icon, 
+            on_clicked=lambda *_: self.execute("st")
+        )
+
         self.add(self.search_button)
         self.add(self.term_button)
         self.add(self.browser_button)
         self.add(self.files_button)
+        self.add(self.settings_button)
 
     @staticmethod
-    def execute(what: Literal["s", "t", "b", "f"]):
+    def execute(what: Literal["s", "t", "b", "f", "st"]):
         match what:
             case "s":
                 exec_shell_command_async(LauncherCommands.SEARCH.value)
@@ -63,3 +71,6 @@ class LauncherMenu(Box):
                 exec_shell_command_async(LauncherCommands.BROWSER.value)
             case "f":
                 exec_shell_command_async(LauncherCommands.FILES.value)
+            case "st":
+                exec_shell_command_async(LauncherCommands.SETTINGS.value)
+
