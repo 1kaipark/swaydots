@@ -7,7 +7,6 @@
   font-weight: 500;
   min-height: 0;
   border-color: @text;
-  border-radius: 18px;
 }
 /* margin format is TOP RIGHT BOTTOM LEFT */
 
@@ -15,13 +14,15 @@ window#waybar {
   /* background-color: @bg0; */
   background-color: @transparent;
   color: @text; /* didn't affect workspaces */
+  border: solid 0px;
 }
 
 #workspaces {
-  background-color: @base;
+  background-color: alpha(@base, 0.7);
   padding: 0px 4px;
   /* margin: 4px 4px 4px 8px; */
   margin: 8px 4px 0px 4px;
+  border: solid 1px
 }
 
 #workspaces button {
@@ -44,29 +45,33 @@ window#waybar {
 
 
 #window {
-  background-color: @base;
+  background-color: alpha(@base, 0.7);
   padding: 0px 16px;
   /* margin: 4px; */
   margin: 8px 4px 0px 4px;
+  border: solid 1px;
 }
 
 window#waybar.empty #window {
   /* hide empty module */
   background-color: transparent;
+  border-color: transparent;
 }
 
 #tray {
-  background-color: @base;
+  background-color: alpha(@base, 0.7);
   padding: 0px 16px;
   /* margin: 4px; */
   margin: 8px 4px 0px 4px;
+  border: solid 1px
 }
 
 #hw {
-  background-color: @base;
+  background-color: alpha(@base, 0.7);
   padding: 0px 16px;
   /* margin: 4px; */
   margin: 8px 4px 0px 4px;
+  border: solid 1px
 }
 
 #cpu {
@@ -82,10 +87,11 @@ window#waybar.empty #window {
 }
 
 #control {
-  background-color: @base;
+  background-color: alpha(@base, 0.7);
   padding: 0px 16px;
   /* margin: 4px; */
   margin: 8px 4px 0px 4px;
+  border: solid 1px
 }
 
 #battery {
@@ -105,26 +111,29 @@ window#waybar.empty #window {
 }
 
 #clock {
-  background-color: @base;
+  background-color: alpha(@base, 0.7);
   padding: 0px 16px;
   /* margin: 4px 8px 4px 4px; */
   margin: 8px 4px 0px 4px;
+  border: solid 1px
 }
 
 #custom-notification {
-  background-color: @base;
+  background-color: alpha(@base, 0.7);
   padding: 0px 4px;
   /* margin: 4px 4px 4px 8px; */
   margin: 8px 8px 0px 4px;
   min-width: 2em;
+  border: solid 1px
 }
 
 
 
 
 #custom-startpanel {
-  background-color: @base;
+  background-color: alpha(@base, 0.7);
   padding: 0px 4px;
   margin: 8px 4px 0px 8px;
   min-width: 2em;
+  border: solid 1px
 }
