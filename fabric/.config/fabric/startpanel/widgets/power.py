@@ -15,6 +15,7 @@ class PowerCommands(Enum):
     LOGOUT = "swaymsg exit"
     REBOOT = "reboot"
     SHUTDOWN = "shutdown -h now"
+    SETTINGS = "systemsettings"
 
 class ConfirmationBox(PopupWindow):
     def __init__(self, parent, command: str, **kwargs):
@@ -63,10 +64,14 @@ class PowerMenu(Box):
         self.shutdown_icon = Label(label="󰐥 ", name="menu-icon-b")
         self.shutdown_button = Button(child=self.shutdown_icon, on_clicked=self.shutdown)
 
+        self.settings_icon = Label(label=" ", name="menu-icon-b")
+        self.settings_button = Button(child=self.settings_icon, on_clicked=self.settings)
+
         self.add(self.lock_button)
         self.add(self.logout_button)
         self.add(self.reboot_button)
         self.add(self.shutdown_button)
+        self.add(self.settings_button)
 
         self.confirm = ConfirmationBox(parent=self, command="echo hi")
 
@@ -100,4 +105,8 @@ class PowerMenu(Box):
             self.confirm.show()
         else:
             self.confirm.hide()
+
+    def settings(self, *args): 
+        # will eventually write a config utility
+        exec_shell_command_async(PowerCommands.SETTINGS.value)
 

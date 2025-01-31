@@ -41,6 +41,8 @@ class StartPanel(Window):
             exclusivity="none",
             visible=False,
             all_visible=False,
+            keyboard_mode="on-demand",
+            on_key_press_event=lambda _,event: self.application.quit() if event.keyval == 65307 else True, # handle ESC = exit
             **kwargs,
         )
 
@@ -68,11 +70,13 @@ class StartPanel(Window):
                 ),
             ],
         )
-
+        
+        
+        greeter=f"good \n{'morning' if time.localtime().tm_hour < 12 else 'afternoon'}, \n {os.getlogin().title()}!"
         self.greeter_label = Label(
-#            label=f"Good {'Morning' if time.localtime().tm_hour < 12 else 'Afternoon'}, {os.getlogin().title()}!",
-            label=pyfiglet.figlet_format("sup {}".format(os.getlogin().title().lower()), "small"),
-            style="font-size: 16px;",
+            label=pyfiglet.figlet_format(greeter.lower(), "small_slant"),
+            style="font-size: 12px;",
+            name="cava-label",
         )
 
         invoke_repeater(
@@ -87,7 +91,7 @@ class StartPanel(Window):
                 children=[self.header,
                           self.greeter_label, 
                           NowPlaying(name="window-inner"),
-                          LauncherMenu(spacing=60, name="window-inner"),
+                          LauncherMenu(spacing=70, name="window-inner"),
                 ],
             )
 
@@ -97,7 +101,7 @@ class StartPanel(Window):
                 orientation="h",
                 spacing=10,
                 children=[
-                    PowerMenu(spacing=51, name="window-inner", orientation="v"),
+                    PowerMenu(spacing=75, name="window-inner", orientation="v"),
                     self.v_box,
                 ],
 

@@ -22,7 +22,7 @@ class Spacer(Label):
         super().__init__(label=" "*n_spaces)
 
 class NowPlaying(Box):
-    def __init__(self, max_len: int = 25, **kwargs):
+    def __init__(self, max_len: int = 25, cava_bars: int = 12, **kwargs):
         self._status: str = "" 
 
         self.max_len = max_len 
@@ -39,7 +39,7 @@ class NowPlaying(Box):
 
         self.top_line = Box(
             children=[
-                CavaWidget(name="cava-box" ), Spacer(2), self.label,
+                CavaWidget(name="cava-box", bars=cava_bars ), Spacer(2), self.label,
             ]
         )
         
