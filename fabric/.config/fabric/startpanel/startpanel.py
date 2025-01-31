@@ -14,6 +14,7 @@ from fabric.widgets.wayland import WaylandWindow as Window
 from fabric.utils import invoke_repeater, get_relative_path
 
 from widgets.media import NowPlaying
+from widgets.power import PowerMenu
 
 
 def get_profile_picture_path() -> str | None:
@@ -29,16 +30,6 @@ def get_profile_picture_path() -> str | None:
 
 
 class StartPanel(Window):
-    @staticmethod
-    def bake_progress_bar(name: str = "ram-progress-bar", size: int = 64, **kwargs):
-        return CircularProgressBar(
-            name=name, min_value=0, max_value=100, size=size, **kwargs
-        )
-
-    @staticmethod
-    def bake_progress_icon(**kwargs):
-        return Label(**kwargs).build().add_style_class("progress-icon").unwrap()
-
     def __init__(self, **kwargs):
         super().__init__(
             layer="overlay",
@@ -78,68 +69,14 @@ class StartPanel(Window):
 
         self.greeter_label = Label(
 #            label=f"Good {'Morning' if time.localtime().tm_hour < 12 else 'Afternoon'}, {os.getlogin().title()}!",
-            label="sup {}".format(os.getlogin().title()),
+            label="sup {}".format(os.getlogin().title().lower()),
             style="font-size: 20px;",
         )
 
-        self.cpu_progress = self.bake_progress_bar()
-        self.ram_progress = self.bake_progress_bar()
-        self.bat_circular = self.bake_progress_bar().build().set_value(42).unwrap()
-
-        self.progress_container = Box(
-            name="progress-bar-container",
-            spacing=12,
-            children=[
-                Box(
-                    children=[
-                        Overlay(
-                            child=self.cpu_progress,
-                            overlays=[
-                                self.bake_progress_icon(
-                                    label="",
-                                    style="margin-right: 8px; text-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #fff;",
-                                )
-                            ],
-                        ),
-                    ],
-                ),
-                Box(name="progress-bar-sep"),
-                Box(
-                    children=[
-                        Overlay(
-                            child=self.ram_progress,
-                            overlays=[
-                                self.bake_progress_icon(
-                                    label="󰘚",
-                                    style="margin-right: 4px; text-shadow: 0 0 10px #fff;",
-                                )
-                            ],
-                        )
-                    ]
-                ),
-                Box(name="progress-bar-sep"),
-                Box(
-                    children=[
-                        Overlay(
-                            child=self.bat_circular,
-                            overlays=[
-                                self.bake_progress_icon(
-                                    label="󱊣",
-                                    style="margin-right: 0px; text-shadow: 0 0 10px #fff, 0 0 18px #fff;",
-                                )
-                            ],
-                        ),
-                    ],
-                ),
-            ],
-        )
-
-        self.update_status()
         invoke_repeater(
             15 * 60 * 1000,  # every 15min
             lambda: (self.uptime_label.set_label(self.get_current_uptime()), True)[1],
         )
-        invoke_repeater(1000, self.update_status)
 
         self.add(
             Box(
@@ -148,22 +85,12 @@ class StartPanel(Window):
                 spacing=24,
                 children=[self.header,
                           self.greeter_label, 
-#                           self.progress_container,
                           NowPlaying(name="window-inner"),
+                          PowerMenu(spacing=60, name="window-inner"),
                 ],
             ),
         )
         self.show_all()
-
-    def update_status(self):
-        self.cpu_progress.value = psutil.cpu_percent()
-        self.ram_progress.value = psutil.virtual_memory().percent
-        if not (bat_sen := psutil.sensors_battery()):
-            self.bat_circular.value = 42
-        else:
-            self.bat_circular.value = bat_sen.percent
-
-        return True
 
     def get_current_uptime(self):
         uptime = time.time() - psutil.boot_time()

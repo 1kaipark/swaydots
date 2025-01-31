@@ -9,6 +9,10 @@ from i3ipc import Connection
 def get_focused_monitor() -> int:
     # efficient code bro
     monitors = Connection().get_outputs()
+
+    if len(monitors) == 1:
+        return 0
+
     for i in range(len(monitors)):
         if monitors[i].focused:
             return i 
