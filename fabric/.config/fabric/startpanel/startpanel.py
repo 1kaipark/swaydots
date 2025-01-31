@@ -99,8 +99,10 @@ class StartPanel(Window):
                     PowerMenu(spacing=51, name="window-inner", orientation="v"),
                     self.v_box,
                 ],
+
             ),
         )
+
         self.show_all()
 
     def get_current_uptime(self):
