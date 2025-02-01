@@ -1,4 +1,4 @@
-@import "catppuccin_frappe.css";
+@import "rose_pine.css";
 
 * {
   font-family: Agave Nerd Font;
@@ -7,6 +7,7 @@
   font-weight: 500;
   min-height: 0;
   border-color: @text;
+  border-radius: 5px;
 }
 /* margin format is TOP RIGHT BOTTOM LEFT */
 
@@ -28,9 +29,10 @@ window#waybar {
 #workspaces button {
   padding: 0 5px;
   background-color: transparent;
-  border-radius: 0px;
+  border-radius: 5px;
   border-color: transparent;
   color: #ffffff;
+  border-radius: 0px;
 }
 
 #workspaces button.active {
@@ -83,6 +85,15 @@ window#waybar.empty #window {
 }
 
 #memory {
+  margin-left: 8px;
+}
+
+#custom-pacman {
+  margin-left: 8px;
+}
+
+
+#custom-turbo {
   margin-left: 8px;
 }
 

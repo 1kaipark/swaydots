@@ -33,7 +33,7 @@
   },
   "group/hw": {
     "orientation": "horizontal",
-    "modules": ["cpu", "temperature", "memory"],
+    "modules": ["cpu", "temperature", "memory", "custom/turbo"],
   },
   "cpu": {
     "format": "<span color='#b2ccd6'>󰍛</span> {usage}%",
@@ -51,7 +51,7 @@
   },
   "group/control": {
     "orientation": "horizontal",
-    "modules": ["battery", "network", "bluetooth", "pulseaudio"],
+    "modules": ["battery", "network", "bluetooth", "pulseaudio", "custom/pacman"],
   },
   "battery": {
     "states": {
@@ -117,5 +117,21 @@
     "return-type": "json",
     "on-click": "source ~/fabric/venv/bin/activate && python ~/.config/fabric/startpanel/spawner.py",
     "escape": true
+  },
+
+  "custom/pacman": {
+    "format": "<span color='#a6d189'> 󰚰</span> {}",
+  	"interval": 3600,                     // every hour
+  	"exec": "checkupdates | wc -l",       // # of updates
+  	"exec-if": "exit 0",                  // always run; consider advanced run conditions
+  	"on-click": "termite -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar", // update system
+  	"signal": 8
+  },
+
+  "custom/turbo": {
+    "format": "<span color='#e78284'>󱀚</span> {}",
+    "interval": 2,
+    "exec": "[[ $(cat /sys/devices/system/cpu/cpu0/cpufreq/boost) -eq 1 ]] && echo 'on' || echo 'off'",
+    "tooltip-format": "turbo boost status",
   },
 }

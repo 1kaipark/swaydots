@@ -1,4 +1,4 @@
-@import url("./catppuccin_frappe.css");
+@import url("./rose_pine.css");
 
 /* Common variables */
 :vars {
@@ -11,7 +11,7 @@
     color: var(--text);
     font-size: 14px;
     font-family: "Agave Nerd Font", sans-serif;
-    border-radius: 1px;
+    border-radius: 5px;
 }
 
 button {
@@ -19,7 +19,7 @@ button {
 }
 
 button:hover {
-    box-shadow: inset 0 25px @crust;
+    box-shadow: inset 0 25px @base;
 }
 
 
@@ -52,7 +52,7 @@ button:hover {
 
 /* Widgets container */
 #widgets-container {
-    background-color: alpha(@crust, 0.6);
+    background-color: alpha(@base, 0.6);
     border: solid 1px;
     padding: 2px;
 }
@@ -63,7 +63,6 @@ button:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 1px;
     border: solid 1px @subtext0;
     padding: 32px;
     margin: 4px;
@@ -71,9 +70,8 @@ button:hover {
 
 /* Window inner */
 #window-inner {
-    border: solid 2px @subtext1;
+    border: solid 2px @subtle;
     background-color: var(--bg);
-    border-radius: 1px;
     padding: 10px;
 }
 
@@ -97,16 +95,20 @@ button:hover {
 }
 
 #cava-label {
-    color: @green;
+    color: @rose;
+}
+
+#generic-color-2 {
+    color: @love;
 }
 
 #menu-icon-a {
-    color: @green;
+    color: @love;
     font-size: 20px;
 }
 
 #menu-icon-b {
-    color: @overlay1;
+    color: @subtle;
     font-size: 20px;
 }
 

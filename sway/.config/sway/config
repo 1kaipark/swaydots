@@ -74,7 +74,7 @@ bindsym $mod+f fullscreen toggle
 
 floating_modifier $mod
 
-bindsym Control+space exec "rofi -show drun"
+bindsym Control+space exec "fuzzel"
 bindsym $mod+Control+r reload
 bindsym $mod+q kill
 
@@ -209,7 +209,7 @@ client.background        $base
 
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 10 
 gaps outer 0
 
 
@@ -218,10 +218,22 @@ set $wallpapers_path ~/Pictures/wall/
 # output * bg `find $wallpapers_path -type f | shuf -n 1` stretch
 
 
-
 smart_borders off
 
-#  ___ _   _ ____  _   _ _____ 
+
+#eye candy
+blur enable
+blur_radius 3
+corner_radius 0
+default_dim_inactive 0.1
+
+layer_effects "launcher" blur enable
+layer_effects "rofi" blur enable
+layer_effects "fabric-overlay" blur enable
+layer_effects "notifications" blur enable#  ___ _   _ ____  _   _ _____ 
+
+shadows enable 
+
 # |_ _| \ | |  _ \| | | |_   _|
 #  | ||  \| | |_) | | | | | |  
 #  | || |\  |  __/| |_| | | |  

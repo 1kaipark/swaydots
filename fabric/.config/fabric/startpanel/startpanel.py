@@ -76,7 +76,7 @@ class StartPanel(Window):
         self.greeter_label = Label(
             label=pyfiglet.figlet_format(greeter.lower(), "small_slant"),
             style="font-size: 10px;",
-            name="cava-label",
+            name="generic-color-2",
             h_align="center",
         )
 
