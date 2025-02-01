@@ -3,8 +3,8 @@
 
 /* Common variables */
 :vars {
-    --module-bg: alpha(@base, 0.7);
-    --bg: alpha(@base, 0.7);
+    --module-bg: alpha(@crust, 0.7);
+    --bg: alpha(@crust, 0.7);
 }
 
 * {
@@ -60,7 +60,7 @@ button:hover {
 
 /* Profile pic */
 #profile-pic {
-    background-color: alpha(@base, 0.2);
+    background-color: alpha(@crust, 0.2);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
