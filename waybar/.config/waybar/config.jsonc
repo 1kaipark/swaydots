@@ -3,33 +3,24 @@
 {
   //"layer": "top", // Waybar at top layer
   "height": 40,
-  "modules-left": ["custom/startpanel", "sway/workspaces", "sway/window"],
-  "modules-right": ["tray", "group/hw", "group/control", "clock", "custom/notification"],
+  "modules-left": ["custom/startpanel", "group/control"],
+  "modules-center": ["sway/workspaces", "sway/window"],
+  "modules-right": ["tray", "group/hw", "clock", "custom/notification"],
   // Modules configuratio1
 
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-
-    "sort-by-number": true,
-    "persistent-workspaces": {
-
-      "HDMI-A-1": 3 // but only three on HDMI-A-1
-    },
-  },
-  
   "sway/workspaces": {
-    "disable-scroll": true,
-    "active-only": false,
     "all-outputs": true,
-    "warp-on-scroll": false,
     "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "focused": "",
+    },
   },
 
   "hyprland/window": {},
   "tray": {
     "icon-size": 15,
-    "spacing": 8,
+    "spacing": 2,
   },
   "group/hw": {
     "orientation": "horizontal",
@@ -66,9 +57,9 @@
     "format-icons": ["󰁺", "󰁼", "󰁾", "󰂁", "󰁹"],
   },
   "network": {
-    "format-ethernet": "<span color='#89ddff'>󰈀</span> {bandwidthDownBytes:=}",
-    "format-wifi": "<span color='#89ddff'>{icon}</span> {bandwidthDownBytes:=}",
-    "format-disconnected": "<span color='#89ddff'>󰤭</span> {bandwidthDownBytes:=}",
+    "format-ethernet": "<span color='#89ddff'>󰈀</span>{bandwidthDownBytes:=}",
+    "format-wifi": "<span color='#89ddff'>{icon}</span> ",
+    "format-disconnected": "<span color='#89ddff'>󰤭</span>{bandwidthDownBytes:=}",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "interval": 2,
     "tooltip-format": "{essid}",
