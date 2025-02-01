@@ -1,4 +1,4 @@
-theme = rose-pine
+theme = catppuccin-frappe
 gtk-tabs-location = hidden
 font-family = Agave Nerd Font
 font-size = 12

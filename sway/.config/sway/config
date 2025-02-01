@@ -198,7 +198,7 @@ default_border pixel 2
 # default_floating_border normal 
 for_window [app_id=".*"] border pixel 2
 
-# target                 title     bg    text   indicator  border
+# target                 title     bg    text   indicator   border
 client.focused           $lavender $base $text  $red $lavender
 client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
 client.unfocused         $overlay0 $base $text  $rosewater $overlay0

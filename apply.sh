@@ -5,3 +5,7 @@ for dir in $(ls); do
   stow $dir 
 done
 
+rm ~/Pictures/wall 
+ln -s ~/Pictures/everblush ~/Pictures/wall
+wpswitch
+
