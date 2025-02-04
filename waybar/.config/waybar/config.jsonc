@@ -17,14 +17,16 @@
     },
   },
 
-  "hyprland/window": {},
+  "sway/window": {
+    "format": "{title:.30}",
+  },
   "tray": {
     "icon-size": 15,
     "spacing": 2,
   },
   "group/hw": {
     "orientation": "horizontal",
-    "modules": ["cpu", "temperature", "memory", "custom/turbo"],
+    "modules": ["battery", "cpu", "temperature", "memory", "custom/turbo"],
   },
   "cpu": {
     "format": "<span color='#b2ccd6'>󰍛</span> {usage}%",
@@ -42,7 +44,7 @@
   },
   "group/control": {
     "orientation": "horizontal",
-    "modules": ["battery", "network", "bluetooth", "pulseaudio", "custom/pacman"],
+    "modules": ["network", "bluetooth", "pulseaudio", "custom/pacman"],
   },
   "battery": {
     "states": {

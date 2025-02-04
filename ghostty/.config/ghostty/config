@@ -11,4 +11,3 @@ shell-integration = zsh
 
 # Transparency
 background-opacity = 0.9
-background-blur-radius = 20

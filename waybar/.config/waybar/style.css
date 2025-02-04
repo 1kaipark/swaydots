@@ -27,12 +27,12 @@ window#waybar {
   margin-right: 10px;
   
   margin-top: 10px;
-  background: alpha(@crust, 0.7);
+  background: alpha(@crust, 0.9);
 }
 
 .modules-center {
   margin-top: 10px;
-  background: alpha(@crust, 0.7);
+  background: alpha(@crust, 0.9);
 }
 
 .modules-left {
@@ -41,7 +41,7 @@ window#waybar {
   margin-left: 10px;
   
   margin-top: 10px;
-  background: alpha(@crust, 0.7);
+  background: alpha(@crust, 0.9);
 }
 
 #battery {
@@ -107,6 +107,6 @@ window#waybar {
 @keyframes blink {
     to {
         background-color: #ffffff;
-        color: alpha(@crust, 0.7);
+        color: alpha(@crust, 0.9);
     }
 }
