@@ -24,6 +24,7 @@ exec_always corectrl
 exec_always nm-applet 
 exec_always kbuildsycoca6
 exec_always hypridle
+exec_always source ~/fabric/.venv/bin/activate && python ~/.local/bin/autotiling.py
 
 # WALLPAPER COMMAND
 exec_always swww img $HOME/Pictures/wall/catppuccin_frappe_car_rain.jpg
@@ -103,7 +104,7 @@ bindsym --locked {
   XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
   XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
   XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
+  
   XF86AudioPlay exec playerctl play-pause
   XF86AudioNext exec playerctl next
   XF86AudioPrev exec playerctl previous
@@ -202,7 +203,7 @@ default_border pixel 2
 for_window [app_id=".*"] border pixel 2
 
 # target                 title     bg    text   indicator   border
-client.focused           $lavender $base $text  $red       $lavender
+client.focused           $lavender $base $text  $red       $mauve
 client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
 client.unfocused         $overlay0 $base $text  $rosewater $overlay0
 client.urgent            $peach    $base $peach $overlay0  $peach
@@ -263,6 +264,8 @@ input {
 input * {
    natural_scroll enabled
 }
+
+input "type:keyboard" xkb_options caps:swapescape
 
 output eDP-1 pos 0 0
 output DP-1 pos 1920 0
